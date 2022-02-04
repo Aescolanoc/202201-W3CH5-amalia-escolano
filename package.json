@@ -1,0 +1,49 @@
+{
+  "name": "202201-w3ch5-amalia-escolano",
+  "version": "1.0.0",
+  "description": "202201-W3CH5-amalia-escolano",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage",
+    "sass:watch": "sass --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aescolanoc/202201-W3CH5-amalia-escolano.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aescolanoc/202201-W3CH5-amalia-escolano/issues"
+  },
+  "homepage": "https://github.com/Aescolanoc/202201-W3CH5-amalia-escolano#readme",
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs"
+        ]
+      }
+    }
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+    "@testing-library/dom": "^8.11.3",
+    "@testing-library/user-event": "^13.5.0",
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.0.0",
+    "jest": "^27.4.7",
+    "sass": "^1.49.4"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
+}
