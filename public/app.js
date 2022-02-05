@@ -1,6 +1,7 @@
 import { PokemonList } from "./components/pokemonlist.js";
 import { getPokemons } from "./services/api.js";
 import { Header } from "./components/header.js";
+import { Details } from "./components/details.js";
 
 export function main() {
   new Header().renderInner("#header");
@@ -12,7 +13,7 @@ export function main() {
       console.log("Estas en la pag favoritos");
       break;
     default:
-      console.log("estas en la pagina details");
+      new Details();
       break;
   }
 }
