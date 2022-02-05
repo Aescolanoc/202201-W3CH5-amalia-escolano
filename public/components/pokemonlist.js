@@ -13,22 +13,35 @@ export class PokemonList extends Component {
       this.prev = this.data.previous;
       this.next = this.data.next;
       this.count = this.data.count;
-      this.template = this.generateTemplate();
-      this.renderInner("#pokemon-list");
-      this.initButtonEvents();
+      this.pokemon.forEach((item, index) => {
+        getPokemons(item.url).then((response2) => {
+          item.image = response2.sprites.front_default;
+          if (index === this.pokemon.length - 1) {
+            setTimeout(() => {
+              this.template = this.generateTemplate();
+              this.renderInner("#pokemon-list");
+              this.initButtonEvents();
+            }, 100);
+          }
+        });
+      });
     });
   }
   generateTemplate() {
     let template = `
     <h1>POKEMON API</h1>
     <div>10/${this.count}</div>
-    <ul class="pokemon-list__info">`;
+    <section class="pokemon-list__info">`;
 
     this.pokemon.forEach((element) => {
-      template += `<li>${element.name}</li>`;
+      template += `<div>
+      <a href="/public/pages/details.html?name=${element.name}">
+      <img src="${element.image}">
+      ${element.name}</a>
+      </div>`;
     });
 
-    template += `</ul>
+    template += `</section>
     <div class="pokemon-list__buttons"> 
     <button data-action="prev" class="btn-nav">Preview</button>
     <button data-action="next" class="btn-nav">Next</button>
