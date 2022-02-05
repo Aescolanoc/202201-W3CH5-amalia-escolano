@@ -13,17 +13,20 @@ export class PokemonList extends Component {
       this.prev = this.data.previous;
       this.next = this.data.next;
       this.count = this.data.count;
-      this.pokemon.forEach((item, index) => {
-        getPokemons(item.url).then((response2) => {
-          item.image = response2.sprites.front_default;
-          if (index === this.pokemon.length - 1) {
-            setTimeout(() => {
-              this.template = this.generateTemplate();
-              this.renderInner("#pokemon-list");
-              this.initButtonEvents();
-            }, 100);
-          }
+
+      let promiseArray = [];
+
+      this.pokemon.forEach((item) => {
+        promiseArray.push(getPokemons(item.url));
+        //Creo array de promesas
+      });
+      Promise.all(promiseArray).then((responses) => {
+        this.pokemon.forEach((item, index) => {
+          item.image = responses[index].sprites.front_default;
         });
+        this.template = this.generateTemplate();
+        this.renderInner("#pokemon-list");
+        this.initButtonEvents();
       });
     });
   }
