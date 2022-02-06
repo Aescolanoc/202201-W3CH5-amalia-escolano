@@ -22,11 +22,9 @@ export class myPokemons extends Component {
             item.image = responses[index].image;
             item.id = responses[index].id;
           });
-          console.log(this.data);
           this.template = this.generateTemplate();
           this.render("#my-pokemon");
           this.initButtonEvents();
-          console.log(this.data);
         })
         .catch((reason) => {
           console.log("Error: " + reason);
