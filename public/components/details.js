@@ -5,7 +5,6 @@ export class Details extends Component {
   template;
   constructor() {
     super();
-
     this.searchPokemonByName();
   }
   searchPokemonByName() {
@@ -22,7 +21,7 @@ export class Details extends Component {
   }
   generateTemplate() {
     let template = `
-    <h2>${this.data.name} Details</h2>
+    <h2>${this.data.name} Details <span class="heart hidden">❤️</span></h2>
     <div>
       <img src="${this.data.sprites.front_default}" alt="${this.data.name} parte delantera">
       <img src="${this.data.sprites.back_default}" alt="${this.data.name} parte trasera">
@@ -32,9 +31,9 @@ export class Details extends Component {
       <p>Experience: ${this.data.base_experience}</p>
       <p>Type: ${this.data.types[0].type.name}</p>
     </div>
-    <div>
-      <button data-action="add" class="button-fav">Add To Favorites</button>
-      <button data-action="remove" class="button-fav">Remove from favorites</button>
+    <div class="pokemon-list__buttons">
+      <button data-action="add" class="button-fav button-fav--add">Add To Favorites</button>
+      <button data-action="remove" class="button-fav button-fav--remove">Remove from favorites</button>
     </div>
     `;
     return template;

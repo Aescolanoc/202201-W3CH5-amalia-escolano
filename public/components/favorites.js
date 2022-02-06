@@ -32,26 +32,18 @@ export class myPokemons extends Component {
     });
   }
   generateTemplate() {
-    let template = `<section id="my-pokemon">`;
+    let template = `<section id="my-pokemon" class="pokemon-list__info pokemon-favorite-wrapper">`;
 
     this.data.forEach((element) => {
-      template += `<div>
+      template += `<div class="pokemon-wrapper">
       <a href="/public/pages/details.html?name=${element.name}">
-      <img src="${element.image}">
-      ${element.name}</a>
+        <img src="${element.image}">
+        <div class="pokemon-name">${element.name}</div>
+      </a>
       </div>`;
     });
 
     template += `</section>`;
     return template;
-  }
-  initButtonEvents() {
-    document.querySelectorAll(".btn-nav").forEach((element) => {
-      element.addEventListener("click", (ev) => {
-        let action = ev.target.dataset.action;
-        let url = action === "prev" ? this.prev : this.next;
-        this.init(url);
-      });
-    });
   }
 }
