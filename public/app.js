@@ -11,7 +11,7 @@ export function main() {
     case "/index.html":
       new PokemonList();
       break;
-    case "/pages/favorites.html":
+    case "/favorites.html":
       new myPokemons();
       break;
     default:

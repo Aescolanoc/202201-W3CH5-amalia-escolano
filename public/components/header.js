@@ -8,8 +8,8 @@ export class Header extends Component {
     this.template = `
     <h1>POKEMON API</h1>
     <ul class="header-nav">
-      <li><a href="/public/index.html">Home</a></li>
-      <li><a href="/public/pages/favorites.html">Favorites</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
     </ul>
   `;
   }

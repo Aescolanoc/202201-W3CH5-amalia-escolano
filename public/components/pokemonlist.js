@@ -40,12 +40,12 @@ export class PokemonList extends Component {
     this.lastPokemon = this.pokemon[this.pokemon.length - 1].id;
 
     let template = `
-    <div class="logo"><img src="/public/pokemon-logo.svg"/></div>
+    <div class="logo"><img src="pokemon-logo.svg"/></div>
     <section class="pokemon-list__info">`;
 
     this.pokemon.forEach((element) => {
       template += `<div class="pokemon-wrapper">
-      <a href="/public/pages/details.html?name=${element.name}">
+      <a href="details.html?name=${element.name}">
         <img src="${element.image}">
         <div class="pokemon-name">${element.name}</div>
       </a>
