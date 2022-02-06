@@ -1,49 +1,42 @@
 import { Component } from "./component.js";
 import { getPokemons } from "../services/api.js";
 
-export class PokemonList extends Component {
+export class myPokemons extends Component {
   constructor() {
     super();
-    this.init("https://pokeapi.co/api/v2/pokemon?limit=10&offset=0");
+    this.favoritesDb = "http://localhost:3000/Pokemon/";
+    this.init(this.favoritesDb);
   }
   init(url) {
     getPokemons(url).then((response) => {
       this.data = response;
-      this.pokemon = this.data.results;
-      this.prev = this.data.previous;
-      this.next = this.data.next;
-      this.count = this.data.count;
 
       let promiseArray = [];
-      console.log(this.pokemon);
-      this.pokemon.forEach((item) => {
-        promiseArray.push(getPokemons(item.url));
+      this.data.forEach((item) => {
+        promiseArray.push(getPokemons(url + item.id));
         //Creo array de promesas
       });
       Promise.all(promiseArray)
         .then((responses) => {
-          this.pokemon.forEach((item, index) => {
-            item.image = responses[index].sprites.front_default;
+          this.data.forEach((item, index) => {
+            item.image = responses[index].image;
             item.id = responses[index].id;
           });
-          console.log(this.pokemon);
+          console.log(this.data);
           this.template = this.generateTemplate();
-          this.renderInner("#pokemon-list");
+          this.render("#my-pokemon");
           this.initButtonEvents();
-          console.log(this.pokemon);
+          console.log(this.data);
         })
-
         .catch((reason) => {
           console.log("Error: " + reason);
         });
     });
   }
   generateTemplate() {
-    let template = `
-    <h1>POKEMON API</h1>
-    <section class="pokemon-list__info">`;
+    let template = `<section id="my-pokemon">`;
 
-    this.pokemon.forEach((element) => {
+    this.data.forEach((element) => {
       template += `<div>
       <a href="/public/pages/details.html?name=${element.name}">
       <img src="${element.image}">
@@ -51,12 +44,7 @@ export class PokemonList extends Component {
       </div>`;
     });
 
-    template += `</section>
-    <div class="pokemon-list__buttons"> 
-    <button data-action="prev" class="btn-nav">Preview</button>
-    <button data-action="next" class="btn-nav">Next</button>
-    </div>
-   `;
+    template += `</section>`;
     return template;
   }
   initButtonEvents() {
