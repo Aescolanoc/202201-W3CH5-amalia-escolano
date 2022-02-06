@@ -6,11 +6,12 @@ import { myPokemons } from "./components/favorites.js";
 
 export function main() {
   new Header().renderInner("#header");
-  switch (location.pathname) {
-    case "/public/index.html":
+  const path = location.pathname.replace("/public", "");
+  switch (path) {
+    case "/index.html":
       new PokemonList();
       break;
-    case "/public/pages/favorites.html":
+    case "/pages/favorites.html":
       new myPokemons();
       break;
     default:
