@@ -37,15 +37,6 @@
       "url": "https://pokeapi.co/api/v2/pokemon/jigglypuff"
     },
     {
-      "id": 1,
-      "name": "bulbasaur",
-      "weight": 69,
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-      "experience": 64,
-      "type": "grass",
-      "url": "https://pokeapi.co/api/v2/pokemon/bulbasaur"
-    },
-    {
       "id": 12,
       "name": "butterfree",
       "weight": 320,

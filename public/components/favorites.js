@@ -24,7 +24,6 @@ export class myPokemons extends Component {
           });
           this.template = this.generateTemplate();
           this.render("#my-pokemon");
-          this.initButtonEvents();
         })
         .catch((reason) => {
           console.log("Error: " + reason);
