@@ -38,10 +38,14 @@ export class PokemonList extends Component {
         });
     });
   }
+
   generateTemplate() {
+    this.lastPokemon = this.pokemon[this.pokemon.length - 1].id;
+
     let template = `
     <h1>POKEMON API</h1>
-    <section class="pokemon-list__info">`;
+    <section class="pokemon-list__info">
+    <div>${this.lastPokemon}/</div>`;
 
     this.pokemon.forEach((element) => {
       template += `<div>
