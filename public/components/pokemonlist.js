@@ -4,7 +4,7 @@ import { getPokemons } from "../services/api.js";
 export class PokemonList extends Component {
   constructor() {
     super();
-    this.init("https://pokeapi.co/api/v2/pokemon?limit=10&offset=0");
+    this.init("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0");
   }
   init(url) {
     getPokemons(url).then((response) => {
@@ -15,7 +15,6 @@ export class PokemonList extends Component {
       this.count = this.data.count;
 
       let promiseArray = [];
-      console.log(this.pokemon);
       this.pokemon.forEach((item) => {
         promiseArray.push(getPokemons(item.url));
         //Creo array de promesas
@@ -26,11 +25,9 @@ export class PokemonList extends Component {
             item.image = responses[index].sprites.front_default;
             item.id = responses[index].id;
           });
-          console.log(this.pokemon);
           this.template = this.generateTemplate();
           this.renderInner("#pokemon-list");
           this.initButtonEvents();
-          console.log(this.pokemon);
         })
 
         .catch((reason) => {
@@ -43,15 +40,15 @@ export class PokemonList extends Component {
     this.lastPokemon = this.pokemon[this.pokemon.length - 1].id;
 
     let template = `
-    <h1>POKEMON API</h1>
-    <section class="pokemon-list__info">
-    <div>${this.lastPokemon}/</div>`;
+    <div class="logo"><img src="/public/pokemon-logo.svg"/></div>
+    <section class="pokemon-list__info">`;
 
     this.pokemon.forEach((element) => {
-      template += `<div>
+      template += `<div class="pokemon-wrapper">
       <a href="/public/pages/details.html?name=${element.name}">
-      <img src="${element.image}">
-      ${element.name}</a>
+        <img src="${element.image}">
+        <div class="pokemon-name">${element.name}</div>
+      </a>
       </div>`;
     });
 
@@ -59,6 +56,7 @@ export class PokemonList extends Component {
     <div class="pokemon-list__buttons"> 
     <button data-action="prev" class="btn-nav">Preview</button>
     <button data-action="next" class="btn-nav">Next</button>
+    <div class="count">${this.lastPokemon}/${this.count}</div>
     </div>
    `;
     return template;
