@@ -35,7 +35,7 @@ export class myPokemons extends Component {
 
     this.data.forEach((element) => {
       template += `<div class="pokemon-wrapper">
-      <a href="/public/pages/details.html?name=${element.name}">
+      <a href="details.html?name=${element.name}">
         <img src="${element.image}">
         <div class="pokemon-name">${element.name}</div>
       </a>

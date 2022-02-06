@@ -1,15 +1,6 @@
 {
   "Pokemon": [
     {
-      "id": 25,
-      "name": "pikachu",
-      "weight": 60,
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-      "experience": 112,
-      "type": "electric",
-      "url": "https://pokeapi.co/api/v2/pokemon/pikachu"
-    },
-    {
       "id": 7,
       "name": "squirtle",
       "weight": 90,
