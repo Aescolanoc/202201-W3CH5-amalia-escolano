@@ -2,7 +2,7 @@
 
 https://202201-w3ch5-amalia-escolano.netlify.app/index.html
 
-![Logo Pokémon](pokemon-logo.svg)
+![Demo capture](https://raw.githubusercontent.com/Aescolanoc/202201-W3CH5-amalia-escolano/main/public/capture.png)
 
 ## Pokémon
 
