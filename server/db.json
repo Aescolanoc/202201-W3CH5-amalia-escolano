@@ -28,15 +28,6 @@
       "url": "https://pokeapi.co/api/v2/pokemon/jigglypuff"
     },
     {
-      "id": 12,
-      "name": "butterfree",
-      "weight": 320,
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png",
-      "experience": 178,
-      "type": "bug",
-      "url": "https://pokeapi.co/api/v2/pokemon/butterfree"
-    },
-    {
       "id": 6,
       "name": "charizard",
       "weight": 905,
@@ -44,6 +35,24 @@
       "experience": 240,
       "type": "fire",
       "url": "https://pokeapi.co/api/v2/pokemon/charizard"
+    },
+    {
+      "id": 1,
+      "name": "bulbasaur",
+      "weight": 69,
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "experience": 64,
+      "type": "grass",
+      "url": "https://pokeapi.co/api/v2/pokemon/bulbasaur"
+    },
+    {
+      "id": 172,
+      "name": "pichu",
+      "weight": 20,
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/172.png",
+      "experience": 41,
+      "type": "electric",
+      "url": "https://pokeapi.co/api/v2/pokemon/pichu"
     }
   ]
 }

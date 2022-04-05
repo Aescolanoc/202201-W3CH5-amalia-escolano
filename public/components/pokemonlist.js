@@ -7,33 +7,36 @@ export class PokemonList extends Component {
     this.init("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0");
   }
   init(url) {
-    getPokemons(url).then((response) => {
-      this.data = response;
-      this.pokemon = this.data.results;
-      this.prev = this.data.previous;
-      this.next = this.data.next;
-      this.count = this.data.count;
+    getPokemons(url)
+      .then((response) => {
+        this.data = response;
+        this.pokemon = this.data.results;
+        this.prev = this.data.previous;
+        this.next = this.data.next;
+        this.count = this.data.count;
 
-      let promiseArray = [];
-      this.pokemon.forEach((item) => {
-        promiseArray.push(getPokemons(item.url));
-        //Creo array de promesas
-      });
-      Promise.all(promiseArray)
-        .then((responses) => {
-          this.pokemon.forEach((item, index) => {
-            item.image = responses[index].sprites.front_default;
-            item.id = responses[index].id;
-          });
-          this.template = this.generateTemplate();
-          this.renderInner("#pokemon-list");
-          this.initButtonEvents();
-        })
-
-        .catch((reason) => {
-          console.log("Error: " + reason);
+        let promiseArray = [];
+        this.pokemon.forEach((item) => {
+          promiseArray.push(getPokemons(item.url));
+          //Creo array de promesas
         });
-    });
+        Promise.all(promiseArray)
+          .then((responses) => {
+            this.pokemon.forEach((item, index) => {
+              item.image = responses[index].sprites.front_default;
+              item.id = responses[index].id;
+            });
+            this.template = this.generateTemplate();
+            this.renderInner("#pokemon-list");
+            this.initButtonEvents();
+          })
+          .catch((reason) => {
+            console.log("Error: " + reason);
+          });
+      })
+      .catch((reason) => {
+        console.log("Error: " + reason);
+      });
   }
 
   generateTemplate() {
@@ -49,6 +52,9 @@ export class PokemonList extends Component {
         <img src="${element.image}">
         <div class="pokemon-name">${element.name}</div>
       </a>
+      <div class="hover-layer">
+        <div class="title">${element.name}</div>
+      </div>
       </div>`;
     });
 

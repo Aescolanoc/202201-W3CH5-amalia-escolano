@@ -27,7 +27,7 @@ import { Details } from "./details.js";
 
 global.fetch = jest.fn().mockResolvedValue({
   json: () =>
-    Promise.resolved([
+    Promise.resolve([
       {
         id: 39,
         name: "jigglypuff",
@@ -58,7 +58,7 @@ describe("testing Details", () => {
     expect(DetailsComponent).toBeDefined();
   });
 
-  test("Testing if button Add to favorites button is rendered, should be rendered", () => {
+  test("Testing if button Add to favorites button is rendered, should be rendered", async () => {
     document.body.innerHTML =
       "<section id='pokemon-details' class='details'></section>";
     new Details("#pokemon-details");
@@ -67,7 +67,7 @@ describe("testing Details", () => {
     ).toBeTruthy();
   });
 
-  test("Testing if button remove from favorites button is rendered, should be rendered", () => {
+  test("Testing if button remove from favorites button is rendered, should be rendered", async () => {
     document.body.innerHTML =
       "<section id='pokemon-details' class='details'></section>";
     new Details("#pokemon-details");
